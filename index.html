@@ -102,9 +102,8 @@
         <a href="https://www.linkedin.com/in/navneet-singh-23cbsk/" class="btn">LinkedIn</a>
     </section>
 
-    <footer>
-        <p>&copy; 2024 Shubham Singh Chauhan. All rights reserved.</p>
-    </footer>
+    <div id="footer-placeholder"></div>
+    <script src="js/footer.js"></script>
 
     <script src="/js/Nav_scripts.js"></script>
     <script>
@@ -112,11 +111,9 @@
 
             projects.forEach(project => {
                 project.addEventListener('click', () => {
-                    // Close all other projects
                     projects.forEach(p => {
                         if (p !== project) p.classList.remove('active');
                     });
-                    // Toggle current project
                     project.classList.toggle('active');
                 });
             });
