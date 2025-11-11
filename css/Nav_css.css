@@ -1,4 +1,3 @@
-/* Reset & base */
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +10,6 @@ body {
     overflow-x: hidden; 
 }
 
-/* Navbar container */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -27,7 +25,6 @@ body {
     border-bottom: 2px solid #ff4d5a;
 }
 
-/* Brand / name */
 .navbar h2 {
     font-size: 1.7rem;
     letter-spacing: 1px;
@@ -40,7 +37,6 @@ body {
     margin: 0;
 }
 
-/* Navbar list */
 .navbar ul {
     list-style: none;
     display: flex;
@@ -49,7 +45,6 @@ body {
     flex-wrap: nowrap;
 }
 
-/* Links */
 .navbar ul li a {
     text-decoration: none;
     color: #fff;
@@ -65,7 +60,6 @@ body {
     background-color: #ff4d5a;
 }
 
-/* Dropdown select */
 .navbar ul li select {
     padding: 0.55rem 0.85rem;
     border-radius: 10px;
@@ -82,11 +76,7 @@ body {
     color: #fff;
     background-color: #ff4d5a;
     box-shadow: 0 4px 15px rgba(255,77,90,0.4);
-
 }
-
-/* Responsive: two-row layout with limited links */
-
 
 @media (max-width: 768px) {
     .navbar {
@@ -96,10 +86,11 @@ body {
     }
 
     .navbar h2{
-        display: none;
+        display: block;
+        margin: 0 auto 0.5rem auto;
+        text-align: center;
     }
 
-    /* Navbar list on second row */
     .navbar ul {
         display: flex;
         gap: 1rem;
@@ -107,12 +98,6 @@ body {
         overflow-x: auto;
     }
 
-    /* Show only Home (first li) and Projects (last li) */
-    .navbar ul li:not(:first-child):not(:last-child) {
-        display: none;
-    }
-
-    /* Link adjustments */
     .navbar ul li a,
     .navbar ul li select {
         padding: 0.45rem 0.7rem;
