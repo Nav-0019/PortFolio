@@ -1,18 +1,77 @@
 <nav class="navbar">
-    <h2>SSC</h2>
-    <ul>
-        <li><a href="/" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="Document/Resume.pdf">Resume</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li>
-            <select id="ProjectsDropdown" onchange="location = this.value;">
-                <option value="" disabled selected>Projects</option>
-                <option value="/projects/webdev">Web Development</option>
-                <option value="/projects/ml">Machine Learning</option>
-                <option value="/projects/ds">Data Science</option>
-                <option value="/projects/others">Others</option>
-            </select>
+    <div class="nav-brand">
+        <a href="index.html">
+            <img src="/img/logo.png" alt="SSC Logo" class="nav-logo">
+        </a>
+    </div>
+
+    <button class="nav-toggle" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+        <span class="hamburger"></span>
+        <span class="hamburger"></span>
+    </button>
+
+    <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="Document/Resume.pdf" target="_blank" class="nav-link">Resume</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-dropdown-wrapper">
+            <a href="#" class="nav-link dropdown-toggle">Projects ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="index.html#Features">Web Development</a></li>
+                <li><a href="index.html#Features">Machine Learning</a></li>
+                <li><a href="index.html#Features">Data Science</a></li>
+                <li><a href="index.html#toggle_minor-projects">Others</a></li>
+            </ul>
         </li>
     </ul>
 </nav>
+
+<script>
+    // Mobile menu toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+    }
+
+    // Dropdown toggle for mobile
+    if (dropdownToggle && dropdownMenu) {
+        dropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            dropdownMenu.classList.toggle('active');
+        });
+    }
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-link:not(.dropdown-toggle)').forEach(link => {
+        link.addEventListener('click', () => {
+            if (navMenu) navMenu.classList.remove('active');
+            if (navToggle) navToggle.classList.remove('active');
+        });
+    });
+
+    // Close dropdown menu links
+    document.querySelectorAll('.dropdown-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (dropdownMenu) dropdownMenu.classList.remove('active');
+            if (navMenu) navMenu.classList.remove('active');
+            if (navToggle) navToggle.classList.remove('active');
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navToggle && navMenu && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+        }
+    });
+</script>
